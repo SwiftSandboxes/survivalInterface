@@ -1,0 +1,36 @@
+<html >
+    <head>
+        <title>Session 1: Simple jQuery DOM manipulation</title>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    </head>
+    <body>
+        <div id="tileset"></div>
+		<div id="context_menu" style="display:none"></div>
+		<div id="grid_location" style="color:green">Hi there!</div>
+        <script type="text/javascript">
+            $(function() {
+                var mapArray = [];
+                var mapSizeX = 32;
+                var mapSizeY = 16;
+
+                var mapContainer = $("<div></div>");
+
+                for(let y = 0; y < mapSizeY; y++) {
+                    var mapRow = $("<div></div>");
+                    for(let x = 0; x < mapSizeX; x++) {
+                        var mapCell = $("<div>" + "y: " + y + ", x:" + x + "</div>");
+                        
+                        var cellSettings = {
+                            "tileType": "grass"
+                        };
+                        mapArray[y,x] = cellSettings;
+                        
+                        mapRow.append(mapCell);
+                    }
+                    mapContainer.append(mapRow);
+                }
+                $('#tileset').append(mapContainer);
+            });
+        </script>
+    </body>
+</html>
